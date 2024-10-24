@@ -9,10 +9,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple[200],
       body: Center(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top: 30)),
+            Padding(padding: EdgeInsets.only(top: 70)),
             GestureDetector(
               onTap: FirstPage.userTapped,
               child: Container(
