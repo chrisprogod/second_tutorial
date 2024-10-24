@@ -1,11 +1,22 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:second_tutorial/pages/home_page.dart';
+import 'package:second_tutorial/pages/profile_page.dart';
+import 'package:second_tutorial/pages/setting_page.dart';
 
 class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+  FirstPage({super.key});
 
-  void userTapped() => print("User Tapped");
+  static void userTapped() {
+    print("User Tapped");
+  }
+
+  final List _page = [
+    HomePage(),
+    ProfilePage(),
+    SettingsPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +73,7 @@ class FirstPage extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(context, '/settingspage');
               },
               trailing: Icon(Icons.favorite),
@@ -69,61 +81,8 @@ class FirstPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Padding(padding: EdgeInsets.only(top: 30)),
-            GestureDetector(
-              onTap: userTapped,
-              child: Container(
-                padding: EdgeInsets.only(top: 25, left: 25, right: 25),
-                height: 300,
-                width: 300,
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple[100],
-                  //curve corners
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                // ignore: sort_child_properties_last
-                child: ListView(
-                  children: [
-                    Center(
-                      child: Text(
-                        "Tap me!",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Icon(
-                        Icons.account_balance_rounded,
-                        size: 100,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.all(20)),
-                    Icon(
-                      Icons.access_alarms_rounded,
-                      color: Colors.white,
-                      size: 100,
-                    ),
-                    Padding(padding: EdgeInsets.all(20)),
-                    Icon(
-                      Icons.book_rounded,
-                      color: Colors.white,
-                      size: 100,
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.deepPurple[200],
         items: [
           //home
           BottomNavigationBarItem(
